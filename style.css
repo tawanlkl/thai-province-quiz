@@ -21,3 +21,16 @@ body {
   padding: 5px;
   width: 200px;
 }
+
+.correct {
+  fill: #00ff00 !important; /* เขียว */
+}
+
+.wrong {
+  fill: #ff4444 !important; /* แดง */
+}
+
+svg path {
+  cursor: pointer;
+  transition: fill 0.3s;
+}
