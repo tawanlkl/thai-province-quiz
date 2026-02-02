@@ -39,13 +39,23 @@ function startGame() {
     }
   }, 1000);
 }
+function markCorrectByName(provinceName) {
+  const className = provinceName.replace(/\s+/g, '');
+  const el = document.querySelector('.' + className);
+
+  if (el) {
+    el.classList.add('correct');
+  } else {
+    console.log('ไม่พบจังหวัด:', className);
+  }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("answer").addEventListener("keyup", function () {
     const input = this.value.trim();
 
     if (provinces.includes(input) && !correct.includes(input)) {
-      correct.push(input);
+  markCorrectByName(input);
 
       const li = document.createElement("li");
       li.innerText = input;
