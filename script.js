@@ -1,7 +1,20 @@
 const provinces = [
   "กรุงเทพมหานคร","กระบี่","กาญจนบุรี","กาฬสินธุ์","กำแพงเพชร",
   "ขอนแก่น","จันทบุรี","ฉะเชิงเทรา","ชลบุรี","ชัยนาท",
-  // (ใส่ให้ครบ 77 จังหวัด)
+  "ชัยภูมิ","ชุมพร","เชียงราย","เชียงใหม่","ตรัง",
+  "ตราด","ตาก","นครนายก","นครปฐม","นครพนม",
+  "นครราชสีมา","นครศรีธรรมราช","นครสวรรค์","นนทบุรี","นราธิวาส",
+  "น่าน","บึงกาฬ","บุรีรัมย์","ปทุมธานี","ประจวบคีรีขันธ์",
+  "ปราจีนบุรี","ปัตตานี","พระนครศรีอยุธยา","พะเยา","พังงา",
+  "พัทลุง","พิจิตร","พิษณุโลก","เพชรบุรี","เพชรบูรณ์",
+  "แพร่","ภูเก็ต","มหาสารคาม","มุกดาหาร","แม่ฮ่องสอน",
+  "ยโสธร","ยะลา","ร้อยเอ็ด","ระนอง","ระยอง",
+  "ราชบุรี","ลพบุรี","ลำปาง","ลำพูน","เลย",
+  "ศรีสะเกษ","สกลนคร","สงขลา","สตูล","สมุทรปราการ",
+  "สมุทรสงคราม","สมุทรสาคร","สระแก้ว","สระบุรี","สิงห์บุรี",
+  "สุโขทัย","สุพรรณบุรี","สุราษฎร์ธานี","สุรินทร์","หนองคาย",
+  "หนองบัวลำภู","อ่างทอง","อำนาจเจริญ","อุดรธานี","อุตรดิตถ์",
+  "อุทัยธานี","อุบลราชธานี"
 ];
 
 let correct = [];
@@ -17,7 +30,8 @@ function startGame() {
   clearInterval(timer);
   timer = setInterval(() => {
     timeLeft--;
-    document.getElementById("timer").innerText = "เวลา: " + timeLeft + " วินาที";
+    document.getElementById("timer").innerText =
+      "เวลา: " + timeLeft + " วินาที";
 
     if (timeLeft <= 0) {
       clearInterval(timer);
@@ -26,19 +40,21 @@ function startGame() {
   }, 1000);
 }
 
-document.getElementById("answer").addEventListener("keyup", function () {
-  const input = this.value.trim();
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("answer").addEventListener("keyup", function () {
+    const input = this.value.trim();
 
-  if (provinces.includes(input) && !correct.includes(input)) {
-    correct.push(input);
+    if (provinces.includes(input) && !correct.includes(input)) {
+      correct.push(input);
 
-    const li = document.createElement("li");
-    li.innerText = input;
-    document.getElementById("correct-list").appendChild(li);
+      const li = document.createElement("li");
+      li.innerText = input;
+      document.getElementById("correct-list").appendChild(li);
 
-    document.getElementById("score").innerText =
-      "ถูก: " + correct.length + " / 77";
+      document.getElementById("score").innerText =
+        "ถูก: " + correct.length + " / 77";
 
-    this.value = "";
-  }
+      this.value = "";
+    }
+  });
 });
